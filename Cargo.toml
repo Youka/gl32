@@ -1,0 +1,35 @@
+[package]
+# Project information
+name = "gl32"
+version = "0.1.1"
+authors = ["Christoph 'Youka' Spanknebel"]
+description = "Generated OpenGL bindings for version 3.2 core."
+# Project type
+edition = "2018"
+# Documentation
+keywords = ["opengl", "gl", "graphics"]
+categories = ["rendering::graphics-api"]
+readme = "README.md"
+license = "Apache-2.0"
+repository = "https://github.com/substation-beta/gl32"
+# Bindings generation
+build = "generate.rs"
+
+[badges]
+# Development status
+travis-ci = {repository = "substation-beta/gl32", branch = "master"}
+maintenance = {status = "passively-maintained"}
+
+[lib]
+# Compile to Rust static library
+crate-type = ["rlib"]
+# Documentation embedded code doesn't need tests
+doctest = false
+
+[build-dependencies]
+# OpenGL binding generator
+gl_generator = "~0.10.0"    # https://crates.io/crates/gl_generator
+
+[dev-dependencies]
+# Windowing
+glutin = "~0.19.0"   # https://crates.io/crates/glutin

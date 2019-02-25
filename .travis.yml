@@ -1,0 +1,40 @@
+# Ubuntu (xenial) as operating system
+dist: xenial
+
+# Setup rust environment with stable & newest language branch
+language: rust
+rust:
+  - stable
+  - nightly
+# Ignore failures in nightly release and don't wait for it
+matrix:
+  allow_failures:
+    - rust: nightly
+  fast_finish: true
+# Cache build dependencies
+cache: cargo
+
+# Add X Virtual Framebuffer for graphics layer
+services:
+  - xvfb
+
+# Add system dependencies
+addons:
+  apt:
+    packages:
+      # Fix X server plugins for OpenGL
+      - libxrandr-dev
+      - libxinerama-dev
+
+# Execute build & tests
+script:
+  - cargo build --verbose
+  - cargo test --verbose
+
+# Deploy build to release platform
+deploy:
+  provider: script # Execute script
+  script: cargo publish --token $CRATES_TOKEN # Package and upload to crates.io with login token
+  on:
+    tags: true  # Commit must be tagged!
+    rust: stable  # Just for build with stable rust!
