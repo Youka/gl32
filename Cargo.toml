@@ -1,7 +1,7 @@
 [package]
 # Project information
 name = "gl32"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["Christoph 'Youka' Spanknebel"]
 description = "Generated OpenGL bindings for version 3.2 core."
 # Project type
@@ -11,13 +11,13 @@ keywords = ["opengl", "gl", "graphics"]
 categories = ["rendering::graphics-api"]
 readme = "README.md"
 license = "Apache-2.0"
-repository = "https://github.com/substation-beta/gl32"
+repository = "https://github.com/Youka/gl32"
 # Bindings generation
 build = "generate.rs"
 
 [badges]
 # Development status
-travis-ci = {repository = "substation-beta/gl32", branch = "master"}
+travis-ci = {repository = "Youka/gl32", branch = "master"}
 maintenance = {status = "passively-maintained"}
 
 [lib]

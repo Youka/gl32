@@ -1,7 +1,7 @@
 use std::env;
 use std::path::Path;
 use std::fs::File;
-use gl_generator::{Registry, Api, Profile, Fallbacks, GlobalGenerator};
+use gl_generator::{Registry, Api, Profile, Fallbacks, StructGenerator};
 
 fn main() {
     // Create target file for binding code
@@ -15,5 +15,5 @@ fn main() {
         Profile::Core,  // Just core / minimal contents
         Fallbacks::None,    // No backwards compatibility
         []  // No extensions
-    ).write_bindings(GlobalGenerator, &mut file).expect("Couldn't write binding code to file!");
+    ).write_bindings(StructGenerator, &mut file).expect("Couldn't write binding code to file!");
 }

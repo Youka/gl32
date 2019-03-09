@@ -14,7 +14,7 @@ matrix:
 # Cache build dependencies
 cache: cargo
 
-# Add X Virtual Framebuffer for graphics layer
+# Add X Virtual Framebuffer for system graphics layer
 services:
   - xvfb
 
@@ -36,5 +36,5 @@ deploy:
   provider: script # Execute script
   script: cargo publish --token $CRATES_TOKEN # Package and upload to crates.io with login token
   on:
-    tags: true  # Commit must be tagged!
     rust: stable  # Just for build with stable rust!
+    tags: true  # Commit must be tagged!

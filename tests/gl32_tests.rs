@@ -21,7 +21,7 @@ mod gl32_tests {
         unsafe {
             gl_window.make_current().expect("Couldn't make GL context current!");
         }
-        gl32::load_with(|symbol| gl_window.get_proc_address(symbol) as *const _);
+        let gl = gl32::Gl::load_with(|symbol| gl_window.get_proc_address(symbol) as *const _);
 
         // Run event loop
         events_loop.run_forever(|event| {
@@ -35,8 +35,8 @@ mod gl32_tests {
 
             // Draw!
             unsafe {
-                gl32::ClearColor(0.0, 1.0, 0.0, 1.0);
-                gl32::Clear(gl32::COLOR_BUFFER_BIT);
+                gl.ClearColor(0.0, 1.0, 0.0, 1.0);
+                gl.Clear(gl32::COLOR_BUFFER_BIT);
             }
 
             // Update screen
